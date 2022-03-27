@@ -6,6 +6,11 @@
   font-family: "Londrina Outline";
   src: url("./assets/fonts/Londrina/LondrinaOutline-Regular.ttf");
 }
+@font-face {
+  font-family: "Special Elite";
+  src: url("./assets/fonts/SpecialElite/SpecialElite-Regular.ttf");
+}
+
 
 body {
   margin: 0;

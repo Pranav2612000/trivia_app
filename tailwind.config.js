@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         londrina: ["Londrina Outline", "sans-serif"],
+        specialElite: ["Special Elite", "sans-serif"],
       },
     },
   },
