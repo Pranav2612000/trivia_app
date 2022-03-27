@@ -1,15 +1,35 @@
 import React from "react";
+import Button from "../../common/Button";
+import Typography from "../../common/Typography";
 
 const Home = () => {
   return (
-    <>
-      <h1>Welcome to Trivia Challenge</h1>
+    <div className="p-8 flex flex-col h-full justify-between items-center">
+      <Typography
+        text="Welcome to Trivia Challenge"
+        container="h1"
+        variant="primary"
+        size="heading"
+      />
+
       <div>
-        <p>You will be presented with 10 True or False Questions</p>
-        <p>Can you score 100%?</p>
+        <Typography
+          text="You will be presented with 10 True or False Questions"
+          container="p"
+          variant="secondary"
+          size="content"
+        />
+        <Typography
+          text="Can you score 100%"
+          container="p"
+          variant="secondary"
+          size="content"
+          className="mt-10 font-bold"
+        />
       </div>
-      <button>Begin</button>
-    </>
+
+      <Button text="Begin" variant="primary" />
+    </div>
   );
 };
 export default Home;
