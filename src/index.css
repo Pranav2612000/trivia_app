@@ -11,6 +11,26 @@
   src: url("./assets/fonts/SpecialElite/SpecialElite-Regular.ttf");
 }
 
+@layer components {
+  .text {
+  }
+  .text-primary {
+    color: theme('colors.green.300');
+    font-family: theme('fontFamily.londrina');
+    font-weight: bold;
+  }
+  .text-secondary {
+    color: theme('colors.green.300');
+    font-family: theme('fontFamily.specialElite');
+  }
+
+  .text-heading {
+    font-size: theme('fontSize.4xl');
+  }
+  .text-content {
+  }
+
+}
 
 body {
   margin: 0;
