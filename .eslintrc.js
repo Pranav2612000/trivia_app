@@ -18,9 +18,10 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: "module",
   },
-  plugins: ["react", "jsx-a11y", "@typescript-eslint"],
+  plugins: ["react", "jsx-a11y"],
   rules: {
     "react-hooks/exhaustive-deps": "error",
+    "react/prop-types": 0,
     "no-var": "error",
     "brace-style": "error",
     "prefer-template": "error",
