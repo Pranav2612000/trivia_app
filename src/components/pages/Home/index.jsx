@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button";
 import Typography from "../../common/Typography";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="p-8 flex flex-col h-full justify-between items-center">
       <Typography
@@ -28,7 +30,7 @@ const Home = () => {
         />
       </div>
 
-      <Button text="Begin" variant="primary" />
+      <Button onClick={() => navigate("/quiz")} text="Begin" variant="primary" />
     </div>
   );
 };
