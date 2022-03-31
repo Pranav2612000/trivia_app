@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import fetchQuestions from "../../../api/fetchQuestions";
 import Typography from "../../common/Typography";
 import Question from "../../Question";
+import Results from "../../Results";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -26,9 +27,18 @@ const Quiz = () => {
     return;
   };
 
-  return (
-    <div className="p-8">
-      {loading && (
+  const resetQuiz = async () => {
+    setAnswers({});
+    setCurrQuestionIndex(0);
+    setLoading(true);
+    const data = await fetchQuestions();
+    setQuestions(data);
+    setLoading(false);
+  };
+
+  const renderUIForCurrentState = () => {
+    if (loading) {
+      return (
         <Typography
           text="Loading..."
           container="p"
@@ -36,15 +46,9 @@ const Quiz = () => {
           size="content"
           className="mt-20"
         />
-      )}
-      {questions.length > 0 && (
-        <Question
-          category={questions[currQuestionIndex].category}
-          question={questions[currQuestionIndex].question}
-          addAnswer={(answer) => addAnswer(currQuestionIndex, answer)}
-        />
-      )}
-      {!loading && questions.length === 0 && (
+      );
+    } else if (!loading && questions.length === 0) {
+      return (
         <Typography
           text="Questions could not be fetched. Try reloading the page!"
           container="p"
@@ -52,9 +56,21 @@ const Quiz = () => {
           size="content"
           className="mt-20"
         />
-      )}
-    </div>
-  );
+      );
+    } else if (questions.length > 0 && currQuestionIndex < questions.length) {
+      return (
+        <Question
+          category={questions[currQuestionIndex].category}
+          question={questions[currQuestionIndex].question}
+          addAnswer={(answer) => addAnswer(currQuestionIndex, answer)}
+        />
+      );
+    } else {
+      return <Results questions={questions} answers={answers} resetQuiz={resetQuiz} />;
+    }
+  };
+
+  return <div className="p-8">{renderUIForCurrentState()}</div>;
 };
 
 export default Quiz;
